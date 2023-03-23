@@ -1,0 +1,17 @@
+Testo
+Orc
+Warrior
+1
+180
+180
+80
+17
+7
+14
+7
+10
+10.0
+['Shortsword', 'Leather Armor', 'Buckler']
+14
+['Mighty Thrust', 'Shield Slam', 'Rush']
+100
