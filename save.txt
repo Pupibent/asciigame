@@ -1,17 +1,17 @@
-Pupa
-Orc
-Rogue
+Poopa
+Elf
+Mage
 1
-165
-165
-95
-19
-18
-17
-12
-19
+80
+80
+200
+9
+13
+7
+16
+10
 8.0
-['Dagger', 'Dark Hood', 'Potion of Invisibility']
-14
-['Chameleon', 'Stab Attack', 'Shadow Lance']
+['Wooden Staff', 'Book of Spells', 'Wizard Hat']
+15
+['Firebolt', 'Minor Healing', 'Immolate']
 100
