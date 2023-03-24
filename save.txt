@@ -1,17 +1,17 @@
-Testo
+Pupa
 Orc
-Warrior
+Rogue
 1
-180
-180
-80
+165
+165
+95
+19
+18
 17
-7
+12
+19
+8.0
+['Dagger', 'Dark Hood', 'Potion of Invisibility']
 14
-7
-10
-10.0
-['Shortsword', 'Leather Armor', 'Buckler']
-14
-['Mighty Thrust', 'Shield Slam', 'Rush']
+['Chameleon', 'Stab Attack', 'Shadow Lance']
 100

@@ -1,4 +1,5 @@
 from random import randint
+import os
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
@@ -27,28 +28,30 @@ class Hero:  # main character class
         self.endurance = 5
         self.intelligence = 5
         self.luck = 5
-        self.crit_modifier = (self.agility // 2) + (self.luck // 1.5) + randint(1, ((self.agility+self.luck) // 2))
+        self.crit_modifier = (self.agility // 2) + (self.luck // 1.5) + randint(1, ((self.agility + self.luck) // 2))
         self.inventory = []
-        self.damage = ((randint(6, 7) + self.strength) + (self.endurance // 2) + (self.luck // 5)) +\
-                      (randint(3, 5) if "Shortsword" in self.inventory else 0) +\
-                      (randint(1, 4) if "Dagger" in self.inventory else 0) +\
+        self.damage = ((randint(6, 7) + self.strength) + (self.endurance // 2) + (self.luck // 5)) + \
+                      (randint(3, 5) if "Shortsword" in self.inventory else 0) + \
+                      (randint(1, 4) if "Dagger" in self.inventory else 0) + \
                       (randint(2, 4) if "Wooden Staff" in self.inventory else 0)
         self.spells = []
         self.gold = 100
-        
+
     def greet(self):
         self.name = input("What's your name? >>> ")
         while len(self.name) == 0:
             self.name = input("Enter your name, please! >>> ")
         else:
-            print(f"\nGreetings, {self.name}!\n")
-    
+            clear()
+            print(f"Greetings, {self.name}!\n")
+
     def race_creation(self):
         select = None
         while select != "1":
-            selection = input("Select your race:\n 1. Human\n 2. Elf\n 3. Orc\n >>> ")
+            selection = input("Select your race:\n\n 1. Human\n 2. Elf\n 3. Orc\n\n >>> ")
 
             if selection == "1":
+                clear()
                 select = input("Humans are equally skilled at everything.\n"
                                "They have average stats and can master any skill.\n"
                                "Do you want to be a Human?\n\n"
@@ -64,11 +67,15 @@ class Hero:  # main character class
 
                 elif select == "2":
                     print("")
+                    clear()
 
                 elif select not in "12":
-                    print("\nType in '1' or '2', please.\n")
+                    clear()
+                    input("\nType in '1' or '2', please.\n")
+                    clear()
 
             elif selection == "2":
+                clear()
                 select = input("Elves are masters of evasive combat and adept in magic.\n"
                                "They tend to be more fragile than other races.\n"
                                "Are you an Elf?\n\n"
@@ -86,11 +93,15 @@ class Hero:  # main character class
 
                 elif select == "2":
                     print("")
+                    clear()
 
                 elif select not in "12":
-                    print("\nType in '1' or '2', please.\n")
+                    clear()
+                    input("\nType in '1' or '2', please.\n")
+                    clear()
 
             elif selection == "3":
+                clear()
                 select = input("Orcs are masters of combat, able to deliver terrifying blows.\n"
                                "They have excellent HP and strength, but are somewhat clumsy.\n"
                                "Are you an Orc?\n\n"
@@ -106,19 +117,29 @@ class Hero:  # main character class
                     self.HP = 150
                     self.MP = 80
 
-                if select == "2":
+                elif select == "2":
                     print("")
+                    clear()
 
-            elif selection not in "12":
-                input("\nType in '1' or '2', please.\n")
+                elif select not in "12":
+                    clear()
+                    input("\nType in '1' or '2', please.\n")
+                    clear()
+
+            elif selection not in "123":
+                clear()
+                input("\nType in '1', '2' or '3', please.\n")
+                clear()
+            clear()
 
     def class_creation(self):
 
         select = None
         while select != "1":
-            class_selection = input("Select your class:\n 1. Warrior\n 2. Rogue\n 3. Mage\n >>> ")
+            class_selection = input("Select your class:\n\n 1. Warrior\n 2. Rogue\n 3. Mage\n\n >>> ")
 
             if class_selection == "1":
+                clear()
                 select = input("Warriors are masters of close combat.\n"
                                "They start with a short sword and a leather armor.\n"
                                "Do you want to be a Warrior?\n\n"
@@ -134,11 +155,15 @@ class Hero:  # main character class
 
                 elif select == "2":
                     print("")
+                    clear()
 
                 elif select not in "12":
-                    print("\nType in '1' or '2', please.\n")
+                    clear()
+                    input("\nType in '1' or '2', please.\n")
+                    clear()
 
             elif class_selection == "2":
+                clear()
                 select = input("Rogues are agile and stealthy fighters.\n"
                                "They are attuned to shadows and can attack with both hands.\n"
                                "They start with a iron dagger and a robe.\n"
@@ -155,11 +180,15 @@ class Hero:  # main character class
 
                 elif select == "2":
                     print("")
+                    clear()
 
                 elif select not in "12":
-                    print("\nType in '1' or '2', please.\n")
+                    clear()
+                    input("\nType in '1' or '2', please.\n")
+                    clear()
 
             elif class_selection == "3":
+                clear()
                 select = input("Mages are skilled at arcane arts.\n"
                                "They have impressive mana reserves and know some battle spells from the start.\n"
                                "Are you a Mage?\n\n"
@@ -174,9 +203,18 @@ class Hero:  # main character class
 
                 elif select == "2":
                     print("")
+                    clear()
 
                 elif select not in "12":
-                    print("\nType in '1' or '2', please.\n")
+                    clear()
+                    input("\nType in '1' or '2', please.\n")
+                    clear()
+
+            elif class_selection not in "123":
+                clear()
+                input("\nType in '1', '2' or '3', please.\n")
+                clear()
+            clear()
 
             self.max_HP = self.HP
 
@@ -187,7 +225,7 @@ class Hero:  # main character class
 
         print(f"Your inventory: {self.inventory}")
         print(f"Known spells: {self.spells}\n")
-        
+
     def heal(self):
         self.HP = self.max_HP
 
@@ -200,7 +238,7 @@ class Enemy:
         self.endurance = 5
         self.intelligence = 5
         self.luck = 5
-        self.crit_modifier = (self.agility // 2) + (self.luck // 1.5) + randint(1, ((self.agility+self.luck) // 2))
+        self.crit_modifier = (self.agility // 2) + (self.luck // 1.5) + randint(1, ((self.agility + self.luck) // 2))
         self.HP = 100
         self.xl = randint(1, 2)
         self.damage = (5 + self.strength + self.endurance // 2 + self.luck // 5)
@@ -239,7 +277,7 @@ class Enemy:
             self.luck += 1
             self.intelligence += 1
             self.HP -= 25
-            
+
     def examine(self):
         print(f"\nYou see a hostile {self.type}\n"
               f"It has {self.strength} Str, {self.agility} Agi,\n{self.endurance} End,"
@@ -274,8 +312,11 @@ def save():
     file.close()
 
 
-def battle():
+def clear():
+    os.system("cls")
 
+
+def battle():
     e = Enemy()
     print(f"{h.name}, you enter the Arena. Hundreds of citizens are watching you.\n\n"
           f"Your opponent today is level {e.xl} {e.type}.\n")
@@ -313,9 +354,9 @@ def battle():
             print(f"\nYou attack {e.type}'s {body_parts[int(attack_roll)]}. It blocks.\n")
 
         elif int(attack_roll) != enemy_defense_roll:
-            h_actual = h.damage + randint(1, int(h.crit_modifier)) +\
-                           (randint(1, int(h.crit_modifier // 2)) if attack_roll == "1" else 0) + \
-                           (randint(1, int(h.crit_modifier // 3)) if attack_roll == "2" else 0)
+            h_actual = h.damage + randint(1, int(h.crit_modifier)) + \
+                       (randint(1, int(h.crit_modifier // 2)) if attack_roll == "1" else 0) + \
+                       (randint(1, int(h.crit_modifier // 3)) if attack_roll == "2" else 0)
             e.HP -= h_actual
             print(f"\nYou hit {e.type}'s {body_parts[int(attack_roll)]} and deal {h_actual} damage. "
                   f"It now has {e.HP} HP")
@@ -326,9 +367,9 @@ def battle():
 
         elif enemy_attack_roll != int(defense_roll):
 
-            e_actual = e.damage + randint(1, int(e.crit_modifier)) +\
-                           (randint(1, int(e.crit_modifier // 2)) if enemy_attack_roll == 1 else 0) + \
-                           (randint(1, int(e.crit_modifier // 3)) if enemy_attack_roll == 2 else 0)
+            e_actual = e.damage + randint(1, int(e.crit_modifier)) + \
+                       (randint(1, int(e.crit_modifier // 2)) if enemy_attack_roll == 1 else 0) + \
+                       (randint(1, int(e.crit_modifier // 3)) if enemy_attack_roll == 2 else 0)
             h.HP -= e_actual
 
             print(f"{e.type} hits your {body_parts[enemy_attack_roll]} and deal {e_actual} damage. "
@@ -365,20 +406,21 @@ while run:
         print("2. LOAD GAME")
         print("3. IN DEVELOPMENT")
         print("4. QUIT GAME")
-        
+
         choice = input(">>> ")
-        
+
         if choice == "1":
+            clear()
             h.greet()
             h.race_creation()
             h.class_creation()
             h.examine_self()
-            print("\nPress any key to continue...\n")
             save()
             print("\nAutosaving...\n")
             menu = False
             play = True
         elif choice == "2":
+            clear()
             f = open("save.txt", "r")
             load_list = f.readlines()
             h.name = load_list[0][:-1]
@@ -403,10 +445,15 @@ while run:
             menu = False
             play = True
         elif choice == "3":
+            clear()
             pass
         elif choice == "4":
+            clear()
             quit()
-        
+        elif choice not in "1234":
+            clear()
+            print("Incorrect input. Please, try again")
+
     while play:
         print("1. Visit the Arena")
         print("2. Visit a local Shop")
@@ -414,46 +461,63 @@ while run:
         print("4. Save Game")
         print("5. Back to main Menu")
         choice = input(">>>> ")
-        
+
         if choice == "1":
+            clear()
             battle()
             play = True
         elif choice == "2":
+            clear()
             shop = True
         elif choice == "3":
+            clear()
             h.examine_self()
+            input("\nPress any key to continue...")
+            clear()
         elif choice == "4":
+            clear()
             save()
-            print("\nGame saved successfully.\nPress any key to continue...\n")
+            input("\nGame saved successfully.\n\nPress any key to continue...\n")
+            clear()
+            play = True
         elif choice == "5":
-            print("\nReturning to main Menu.\nPress any key to continue...\n")
+            clear()
+            input("\nReturning to main Menu.\n\nPress any key to continue...\n")
+            clear()
             play = False
             menu = True
         elif choice not in "12345":
-            print("\nIncorrect input. Please, try again.\n")
-            print("")
-            
+            clear()
+            input("\nIncorrect input. Please, try again.\n")
+            clear()
+
         if shop:
+            clear()
             print("\nWelcome to my humble shop!\n")
             print("1. Restore health --- 0 gold\n")
             print("2. Longsword --- 350 gold\n")
             print("3. Exit shop\n")
 
-        shop_choice = input("")
+            shop_choice = input(">>>> ")
 
-        if shop_choice == "1":
-            print("\nYour wounds are magically healed.\n")
-            print(f"You feel much better, healed {h.max_HP - h.HP} points. You have {h.max_HP} HP now.\n")
-            h.heal()
-            shop = True
-        elif shop_choice == "2":
-            print("\nIn development.\n")
-            print("")
-            shop = True
-        elif shop_choice == "3":
-            shop = False
-            play = True
-        elif shop_choice not in "123":
-            print("\nIncorrect input. Please, try again.\n")
-            print("")
-            shop = True
+            if shop_choice == "1":
+                clear()
+                print("\nYour wounds are magically healed.\n")
+                input(f"You feel much better, healed {h.max_HP - h.HP} points. You have {h.max_HP} HP now.\n")
+                h.heal()
+                clear()
+                shop = False
+            elif shop_choice == "2":
+                clear()
+                input("\nIn development.\n")
+                clear()
+                shop = False
+            elif shop_choice == "3":
+                clear()
+                shop = False
+                play = True
+            elif shop_choice not in "123":
+                clear()
+                input("\nIncorrect input. Please, try again.\n")
+                clear()
+                shop = True
