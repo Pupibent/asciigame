@@ -318,20 +318,23 @@ def clear():
 
 def battle():
     e = Enemy()
-    print(f"{h.name}, you enter the Arena. Hundreds of citizens are watching you.\n\n"
+    clear()
+    print(f"{h.name}, you enter the Arena. Hundreds of citizens are watching you.\n"
           f"Your opponent today is level {e.xl} {e.type}.\n")
 
     print(f"It has {e.strength} Str, {e.agility} Agi, {e.endurance} End, "
           f"{e.intelligence} Int and {e.luck} Luck.\n\n"
           f"It can deal up to {int(e.damage + e.crit_modifier)} damage and has {e.HP} HP.\n")
 
-    print("")
+    input(">>>> BEGIN FIGHT <<<<")
 
     while e.HP and h.HP > 0:
         print("\nSelect a body part to attack:\n")
         attack_roll = input(" 1. Attack head\n 2. Attack chest\n 3. Attack hands\n 4. Attack legs\n>>> ")
+        clear()
         print("\nSelect a body part to defend:\n")
         defense_roll = input(" 1. Protect head\n 2. Protect chest\n 3. Protect hands\n 4. Protect legs\n>>> ")
+        clear()
 
         enemy_attack_roll = randint(1, 4)
         enemy_defense_roll = randint(1, 4)
@@ -341,16 +344,18 @@ def battle():
         while attack_roll in ["1", "2", "3", "4"]:
             break
         else:
+            clear()
             input("\nInvalid input. Please, try again.\n")
             continue
 
         while defense_roll in ["1", "2", "3", "4"]:
             break
         else:
+            clear()
             input("\nInvalid input. Please, try again.\n")
             continue
 
-        if int(attack_roll) == enemy_defense_roll:
+        if int(attack_roll) == enemy_defense_roll:  # maybe I should make evasion and magic in this exact loop
             print(f"\nYou attack {e.type}'s {body_parts[int(attack_roll)]}. It blocks.\n")
 
         elif int(attack_roll) != enemy_defense_roll:
@@ -378,16 +383,19 @@ def battle():
         if e.HP <= 0:
             print(f"\nYou have defeated the {e.type}!\n")
             input("Press any key to continue...")
+            clear()
             break
 
         if h.HP <= 0:
             print("\nYOU ARE DEAD\n")
             input("Press any key to exit...")
+            clear()
             quit()
 
         if e.HP and h.HP <= 0:
             print("\nYOU ARE DEAD\n")
             input("Press any key to exit...")
+            clear()
             quit()
 
 
